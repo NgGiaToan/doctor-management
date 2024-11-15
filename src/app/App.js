@@ -1,74 +1,33 @@
-import '@mock-api';
-import BrowserRouter from '@fuse/core/BrowserRouter';
-import FuseLayout from '@fuse/core/FuseLayout';
-import FuseTheme from '@fuse/core/FuseTheme';
-import { SnackbarProvider } from 'notistack';
-import { useSelector } from 'react-redux';
-import rtlPlugin from 'stylis-plugin-rtl';
-import createCache from '@emotion/cache';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Dùng Routes thay vì Switch
+import Dashboard from '../pages/Dashboard/Dashboard';
+import Appointment from '../pages/Dashboard/Appointment';
+
 import { CacheProvider } from '@emotion/react';
-import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
-import { selectUser } from 'app/store/userSlice';
-import themeLayouts from 'app/theme-layouts/themeLayouts';
-import { selectMainTheme } from 'app/store/fuse/settingsSlice';
-import FuseAuthorization from '@fuse/core/FuseAuthorization';
-import settingsConfig from 'app/configs/settingsConfig';
-import withAppProviders from './withAppProviders';
-import { AuthProvider } from './auth/AuthContext';
+import createCache from '@emotion/cache';
+import { SnackbarProvider } from 'notistack';
+import { Provider } from 'react-redux';
+import store from './store';
 
-// import axios from 'axios';
-/**
- * Axios HTTP Request defaults
- */
-// axios.defaults.baseURL = "";
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
-const emotionCacheOptions = {
-  rtl: {
-    key: 'muirtl',
-    stylisPlugins: [rtlPlugin],
-    insertionPoint: document.getElementById('emotion-insertion-point'),
-  },
-  ltr: {
-    key: 'muiltr',
-    stylisPlugins: [],
-    insertionPoint: document.getElementById('emotion-insertion-point'),
-  },
-};
+const cache = createCache({ key: 'css' });
 
 const App = () => {
-  const user = useSelector(selectUser);
-  const langDirection = useSelector(selectCurrentLanguageDirection);
-  const mainTheme = useSelector(selectMainTheme);
-
   return (
-    <CacheProvider value={createCache(emotionCacheOptions[langDirection])}>
-      <FuseTheme theme={mainTheme} direction={langDirection}>
-        <AuthProvider>
-          <BrowserRouter>
-            <FuseAuthorization
-              userRole={user.role}
-              loginRedirectUrl={settingsConfig.loginRedirectUrl}
-            >
-              <SnackbarProvider
-                maxSnack={5}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                classes={{
-                  containerRoot: 'bottom-0 right-0 mb-52 md:mb-68 mr-8 lg:mr-80 z-99',
-                }}
-              >
-                <FuseLayout layouts={themeLayouts} />
-              </SnackbarProvider>
-            </FuseAuthorization>
-          </BrowserRouter>
-        </AuthProvider>
-      </FuseTheme>
-    </CacheProvider>
+    <Provider store={store}> {/* Redux store */}
+      <CacheProvider value={cache}> {/* Css cần tiềm hiểu về CSP */}
+        <SnackbarProvider maxSnack={5}> {/* Hiện thông báo đối đa 5 */}
+          <Router>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/appointment" element={<Appointment />} />
+              
+            </Routes>
+          </Router>
+        </SnackbarProvider>
+      </CacheProvider>
+    </Provider>
   );
 };
 
-export default withAppProviders(App)();
+export default App;

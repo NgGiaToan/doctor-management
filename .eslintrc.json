@@ -1,0 +1,9 @@
+{
+    "plugins": ["react", "jsx-a11y","import"],
+    "rules": {
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/interactive-supports-focus": "off",
+        "import/no-webpack-loader-syntax": "off",
+        "import/extensions": "off"
+    }
+}
