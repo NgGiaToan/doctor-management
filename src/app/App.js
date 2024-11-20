@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Dùng Routes thay vì Switch
 import Dashboard from '../pages/Dashboard/Dashboard';
-import Appointment from '../pages/Dashboard/Appointment';
+import HomePage from '../pages/HomePage/HomePage';
+import MyPatients from '../pages/MyPatients/MyPatients';
 
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
@@ -19,9 +20,9 @@ const App = () => {
         <SnackbarProvider maxSnack={5}> {/* Hiện thông báo đối đa 5 */}
           <Router>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/appointment" element={<Appointment />} />
-              
+              <Route path="/" element={<HomePage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/mypatients" element={<MyPatients />} />
             </Routes>
           </Router>
         </SnackbarProvider>

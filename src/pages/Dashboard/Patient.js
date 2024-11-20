@@ -75,7 +75,7 @@ const Patient = () => {
                         <text className="ml-[1050px] absolute">Diseases</text>
                         <text className="ml-[1250px] absolute">Status</text>
                     </div>
-                    <div>
+                    <div className="h-[420px] overflow-y-scroll snap-y snap-mandatory">
                         {items.map((item, index) => (
                             <div className="mt-10 h-[94px] bg-white text-gray-700 flex pt-20 rounded-xl relative">
                                 <div className="ml-28 w-[54px] h-[54px] overflow-hidden flex-none" key={index}>

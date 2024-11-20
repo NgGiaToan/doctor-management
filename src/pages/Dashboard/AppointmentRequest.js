@@ -35,7 +35,7 @@ const AppointmentRequest = () => {
         const isConfirmed = await confirmAction(title);
         if (isConfirmed) 
         {
-            console.log(isConfirmed);
+            
             try {
                 await updateAppointmentStatus(appointmentId, title); 
                 setStatus([title, appointmentId]); 
@@ -80,7 +80,6 @@ const AppointmentRequest = () => {
                 appointmentStatus: title, 
                 };
 
-                console.log(updatedData);
                 const response = await fetch(`https://localhost:7169/api/Appointment/${appointmentId}`, {
                 method: 'PUT', 
                 headers: {

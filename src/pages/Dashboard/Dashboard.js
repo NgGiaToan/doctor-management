@@ -4,14 +4,13 @@ import Appointment from './Appointment';
 import PatientChart from './PatientChart';
 import GenderChart from './GenderChart';
 import Patient from './Patient';
+import Sidebar from './Sidebar';
 
 const Dashboard = () => {
   return (
     <div className="bg-gray-200 h-auto w-screen flex pb-[200px]">
-        <div className="bg-white w-[326px] h-full mr-[39px] rounded-xl">
-
-        </div>
-        <div>
+        <Sidebar ></Sidebar>
+        <div className="ml-[39px]">
           <div className="h-[400px]"> 
 
           </div>
