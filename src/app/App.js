@@ -9,6 +9,8 @@ import createCache from '@emotion/cache';
 import { SnackbarProvider } from 'notistack';
 import { Provider } from 'react-redux';
 import store from './store';
+import { Navigate} from 'react-router-dom';
+
 
 
 const cache = createCache({ key: 'css' });
@@ -20,7 +22,7 @@ const App = () => {
         <SnackbarProvider maxSnack={5}> {/* Hiện thông báo đối đa 5 */}
           <Router>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/mypatients" element={<MyPatients />} />
             </Routes>

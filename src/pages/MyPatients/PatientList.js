@@ -1,11 +1,13 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useTransition } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactPaginate from 'react-paginate';
 import AddPatient from './AddPatient.js';
 
 const PatientList = () => {
+
+    const [isPending, setTransition] = useTransition()
 
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true); 
@@ -86,14 +88,17 @@ const PatientList = () => {
 
     const handleChange = (event) => {
         const newValue = event.target.value;
-        setSearch(newValue);
+        setTransition(()=>{
+            setSearch(newValue);
+        })
       };
 
     return (
         <div>
             {showAdd && 
             <AddPatient onClose={() => setShowAdd(false)}></AddPatient>}
-            <div className="h-full w-[1516px]">
+            
+            <div className="h-auto w-[1516px]">
                 <div className="flex mt-40 justify-between items-baseline">
                     <p className="text-4xl font-bold text-white">Patient List</p>
                     <button onClick ={() => setShowAdd(true)} className="flex pt-20 pb-20 pl-32 pr-36 bg-[#6D64E5] hover:bg-[#7168E9] rounded-xl">

@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  safelist: ['pl-24', 'pl-40', 'pl-56', 'pl-72', 'pl-80'],
+  safelist: ['pl-24', 'pl-40', 'pl-56', 'pl-72', 'pl-80','bg-[#0C0B19]', 'bg-[#FFFFFF]', 'text-[#555962]', 'text-[#000000]'],
   presets: [],
   darkMode: 'class', // or 'class'
   theme: {

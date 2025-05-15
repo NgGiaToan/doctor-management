@@ -4,12 +4,14 @@ import Sidebar from './Sidebar';
 
 const MyPatients = () => {
     return (
-        <div className="bg-[#242632] w-screen h-full">
-            <div className="flex mb-[400px]"> 
-                <div className="mr-[39px]">
+        <div className="bg-[#242632] w-screen h-auto">
+            <div className="flex"> 
+                <div className="mr-[39px] ">
                     <Sidebar></Sidebar>
                 </div>
-                <PatientList></PatientList>
+                <div className="ml-[340px] mb-[20px]">
+                    <PatientList></PatientList>
+                </div>
             </div>
         </div>
     )

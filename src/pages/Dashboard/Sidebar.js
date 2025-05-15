@@ -68,13 +68,13 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div className="bg-[#FFFFFF] w-[326px] h-full p-20 pt-[200px] ">
+            <div className="bg-[#FFF] fixed w-[326px] h-full p-20 pt-[200px] ">
                 {dataButtons.map((button, index) => (
                     <CustomButton
                         key= {button.id}
                         link = {button.link}
                         activeLink= {button.activeLink}
-                        backgroundColor= '#0C0B19'
+                        backgroundColor= '#FFFFFF'
                         activeBackgroundColor= '#0C0B19'
                         text={button.text}
                         textColor= '#555962'

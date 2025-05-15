@@ -1,7 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useId } from 'react';
 
 const AddPatient =({ onClose })=> {
+
+    const fNameId = useId();
+    const lNameId = useId();
+    const locationId = useId();
+    const emailId = useId();
+    const reasonId = useId();
+    const phoneNumberId = useId();
+    
 
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
@@ -82,17 +90,17 @@ const AddPatient =({ onClose })=> {
                 <div className=" py-32 absolute h-[800px] w-[720px] bg-[#282A36] rounded shadow-2xl">
                     <form onSubmit={handleSubmit}>
                         <div className="flex justify-between px-60">
-                            <text className="text-white text-2xl mt-8">Add New Patient</text>
+                            <span className="text-white text-2xl mt-8">Add New Patient</span>
                             <button className ="text-white text-3xl" onClick={onClose}>x</button>
                         </div>
                         <hr class="border-t border-gray-700 w-full mt-16" />
                         <div className="flex px-60 mt-32">
                             <div className="flex flex-col">
-                                <label for="firstName" className="text-[#FFFFFF] text-xl">First Name</label>
+                                <label htmlFor={fNameId} className="text-[#FFFFFF] text-xl">First Name</label>
                                 <input 
                                     value={fName} 
                                     onChange={(e) => setFName(e.target.value)} 
-                                    id= "firstName"
+                                    id= {fNameId}
                                     className= "placeholder-[#8E919A] text-[#FFFFFF] text-xl bg-[#282A36] mt-8 border-[#333A44] border-2 rounded-lg p-12 w-[280px] h-60" 
                                     type="text" 
                                     placeholder='Jhone'
@@ -101,11 +109,11 @@ const AddPatient =({ onClose })=> {
                                 </input>
                             </div>
                             <div className="flex flex-col ml-40">
-                                <label for="lastName" className="text-[#FFFFFF] text-xl">Last Name</label>
+                                <label htmlFor={lNameId} className="text-[#FFFFFF] text-xl">Last Name</label>
                                 <input 
                                     value={lName} 
                                     onChange={(e) => setLName(e.target.value)} 
-                                    id= "lastName"
+                                    id= {lNameId}
                                     className= "placeholder-[#8E919A] text-[#FFFFFF] text-xl bg-[#282A36] mt-8 border-[#333A44] border-2 rounded-lg p-12 w-[280px] h-60" 
                                     type="text" 
                                     placeholder='Martin'
@@ -117,11 +125,11 @@ const AddPatient =({ onClose })=> {
 
                         <div className="flex px-60 mt-32">
                             <div className="flex flex-col">
-                                <label for="location" className="text-[#FFFFFF] text-xl">Location</label>
+                                <label htmlFor={locationId} className="text-[#FFFFFF] text-xl">Location</label>
                                 <input 
                                     value={location} 
                                     onChange={(e) => setLocation(e.target.value)} 
-                                    id= "location"
+                                    id= {locationId}
                                     className= "placeholder-[#8E919A] text-[#FFFFFF] text-xl bg-[#282A36] mt-8 border-[#333A44] border-2 rounded-lg p-12 w-[600px] h-60" 
                                     type="text" 
                                     placeholder='2972 Westtheimer Rd. Santa Ana, lllinois 85486'
@@ -133,11 +141,11 @@ const AddPatient =({ onClose })=> {
 
                         <div className="flex px-60 mt-32">
                             <div className="flex flex-col">
-                                <label for="patientEmail" className="text-[#FFFFFF] text-xl">Patient Email</label>
+                                <label htmlFor= {emailId} className="text-[#FFFFFF] text-xl">Patient Email</label>
                                 <input 
                                     value={email} 
                                     onChange={(e) => setEmail(e.target.value)} 
-                                    id= "patientEmail"
+                                    id= {emailId}
                                     className= "placeholder-[#8E919A] text-[#FFFFFF] text-xl bg-[#282A36] mt-8 border-[#333A44] border-2 rounded-lg p-12 w-[280px] h-60" 
                                     type="text" 
                                     placeholder='Info@patient.com'
@@ -146,7 +154,7 @@ const AddPatient =({ onClose })=> {
                                 </input>
                             </div>
                             <div className="flex flex-col ml-40">
-                                <label for="phoneNumber" className="text-[#FFFFFF] text-xl">Phone Number</label>
+                                <label htmlFor={phoneNumberId} className="text-[#FFFFFF] text-xl">Phone Number</label>
                                 
                                 <div className="flex">
                                     <select 
@@ -164,7 +172,7 @@ const AddPatient =({ onClose })=> {
                                     <input 
                                         value={phoneNumber}  
                                         onChange={(e) => setPhoneNumber(e.target.value)}     
-                                        id= "phoneNumber"
+                                        id= {phoneNumberId} 
                                         className= "placeholder-[#8E919A] text-[#FFFFFF] text-xl bg-[#282A36] mt-8 border-[#333A44] h-60 border-2 rounded-lg p-12 w-[200px]" 
                                         type="text" 
                                         placeholder='01767766336'
@@ -176,11 +184,11 @@ const AddPatient =({ onClose })=> {
                         </div>
 
                         <div className="flex px-60 mt-32 flex-col">
-                        <label for="reason" className="text-[#FFFFFF] text-xl">Reason</label>
+                        <label htmlFor={reasonId} className="text-[#FFFFFF] text-xl">Reason</label>
                             <textarea 
                                 value={reason} 
                                 onChange={(e) => setReason(e.target.value)}                                         
-                                id="reason"
+                                id={reasonId}
                                 className="mt-8 text-xl bg-[#282A36] text-white border-[#333A44] h-[136px] border-2 rounded-lg p-12"
                                 required
                             >    

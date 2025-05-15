@@ -68,7 +68,7 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div className="bg-[#282A32] w-[326px] h-full p-20 pt-[200px]">
+            <div className="bg-[#282A32] fixed w-[326px] h-full p-20 pt-[200px]">
                 {dataButtons.map((button, index) => (
                     <CustomButton
                         key= {button.id}
